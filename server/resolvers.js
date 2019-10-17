@@ -1,6 +1,6 @@
 //const { gql } = require("apollo-server-express");
-
+const db = require("./db");
 const Query = {
-  jobs: () => []
+  jobs: () => db.jobs.list()
 };
 module.exports = { Query };
