@@ -1,4 +1,4 @@
 //const { gql } = require("apollo-server-express");
 
-const Query = { greeting: () => "I love anime and programming:)" };
+const Query = { jobs: () => [] };
 module.exports = { Query };
