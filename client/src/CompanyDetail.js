@@ -5,7 +5,7 @@ export class CompanyDetail extends Component {
   //const {companyId} = this.props.match.params;
 
   state = {
-    company: {}
+    company: null
   };
   async componentDidMount() {
     const { companyId } = this.props.match.params;
@@ -17,6 +17,9 @@ export class CompanyDetail extends Component {
 
   render() {
     const { company } = this.state;
+    if (!company) {
+      return null;
+    }
     return (
       <div>
         <h1 className="title">{company.name}</h1>

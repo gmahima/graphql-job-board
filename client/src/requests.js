@@ -53,7 +53,7 @@ export async function loadCompany(id) {
       description
     }
   }`;
-  const res = await graphqlRequest(query, { id });
-  console.log(res);
-  return res.company;
+  const { company } = await graphqlRequest(query, { id });
+
+  return company;
 }
