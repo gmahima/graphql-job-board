@@ -8,7 +8,6 @@ export class JobList extends Component {
   }
 
   renderJob(job) {
-    console.log(this.props);
     const title = job.company
       ? `${job.title} at ${job.company.name}`
       : job.title;
