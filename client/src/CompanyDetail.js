@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { loadCompany } from "./requests.js";
+import { JobList } from "./JobList";
 
 export class CompanyDetail extends Component {
   //const {companyId} = this.props.match.params;
@@ -24,6 +25,8 @@ export class CompanyDetail extends Component {
       <div>
         <h1 className="title">{company.name}</h1>
         <div className="box">{company.description}</div>
+        <h5 className="title ">Jobs at {company.name}</h5>
+        <JobList jobs={company.jobs} />
       </div>
     );
   }

@@ -1,4 +1,4 @@
-const endPointUrl = "https://m6whk.sse.codesandbox.io/graphql";
+const endPointUrl = "https://216po.sse.codesandbox.io/graphql";
 
 async function graphqlRequest(query, variables = {}) {
   console.log(variables);
