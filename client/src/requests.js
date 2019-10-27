@@ -1,4 +1,4 @@
-const endPointUrl = "https://216po.sse.codesandbox.io/graphql";
+const endPointUrl = "https://ckvb1.sse.codesandbox.io/graphql";
 
 async function graphqlRequest(query, variables = {}) {
   //console.log(variables);
@@ -57,7 +57,6 @@ export async function loadCompany(id) {
       }
     }
   }`;
-  console.log("cfbdfd");
   let res;
   try {
     res = await graphqlRequest(query, { id });
@@ -66,4 +65,22 @@ export async function loadCompany(id) {
   }
 
   return res.company;
+}
+export async function addJob(input) {
+  //console.log(id);
+  const mutation = `mutation CreateJob($input:CreateJobInput){
+    job:createJob(input:$input){
+      id
+      title
+      description
+    }
+  }`;
+  let res;
+  try {
+    res = await graphqlRequest(mutation, { input });
+  } catch (e) {
+    console.log(e.message);
+  }
+
+  return res.job;
 }
