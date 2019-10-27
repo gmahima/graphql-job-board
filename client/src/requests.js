@@ -1,7 +1,7 @@
 const endPointUrl = "https://216po.sse.codesandbox.io/graphql";
 
 async function graphqlRequest(query, variables = {}) {
-  console.log(variables);
+  //console.log(variables);
   const res = await fetch(endPointUrl, {
     method: "POST",
     headers: { "content-type": "application/json" },
@@ -12,7 +12,7 @@ async function graphqlRequest(query, variables = {}) {
     const message = resBody.errors.map(error => error.message).join("\n");
     throw new Error(message);
   }
-  console.log(resBody.data);
+  //  console.log(resBody.data);
   return resBody.data;
 }
 
@@ -45,7 +45,7 @@ export async function loadJob(id) {
 }
 
 export async function loadCompany(id) {
-  console.log(id);
+  //console.log(id);
   const query = `query getComp($id: ID!){
     company(id:$id){
       id
@@ -64,7 +64,6 @@ export async function loadCompany(id) {
   } catch (e) {
     console.log(e.message);
   }
-  console.log(res);
-  console.log("hi");
+
   return res.company;
 }
