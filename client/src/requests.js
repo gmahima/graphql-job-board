@@ -10,13 +10,15 @@ async function graphqlRequest(query, variables = {}) {
     body: JSON.stringify({ query, variables })
   };
   if (isLoggedIn()) {
-    request.headers["authorization"] = "Bearer" + getAccessToken;
+    console.log(getAccessToken());
+    request.headers["authorization"] = "Bearer" + getAccessToken();
   }
 
   const res = await fetch(endPointUrl, request);
   const resBody = await res.json();
   if (resBody.errors) {
     const message = resBody.errors.map(error => error.message).join("\n");
+    console.log("hi");
     throw new Error(message);
   }
   //  console.log(resBody.data);
