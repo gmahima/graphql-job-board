@@ -1,12 +1,19 @@
+import { isLoggedIn, getAccessToken } from "./auth";
 const endPointUrl = "https://ckvb1.sse.codesandbox.io/graphql";
 
 async function graphqlRequest(query, variables = {}) {
   //console.log(variables);
-  const res = await fetch(endPointUrl, {
+
+  let request = {
     method: "POST",
     headers: { "content-type": "application/json" },
     body: JSON.stringify({ query, variables })
-  });
+  };
+  if (isLoggedIn()) {
+    request.headers["authorization"] = "Bearer" + getAccessToken;
+  }
+
+  const res = await fetch(endPointUrl, request);
   const resBody = await res.json();
   if (resBody.errors) {
     const message = resBody.errors.map(error => error.message).join("\n");
